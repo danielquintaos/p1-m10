@@ -1,0 +1,128 @@
+openapi: 3.0.0
+info:
+  title: pedido API
+  description: This API allows users to create, retrieve, update, and delete pedidos.
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000/api
+    description: Development server
+
+paths:
+  /pedidos:
+    get:
+      summary: List all pedidos
+      operationId: listPedidos
+      tags:
+        - pedidos
+      responses:
+        '200':
+          description: An array of pedidos.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/pedidos'
+
+    post:
+      summary: Create a new pedido
+      operationId: createPedido
+      tags:
+        - pedidos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pedidos'
+      responses:
+        '201':
+          description: Successfully created pedido.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pedidos'
+        '400':
+          description: Invalid input provided.
+
+  /pedidos/{id}:
+    get:
+      summary: Get a pedido by ID
+      operationId: getPedido
+      tags:
+        - pedido
+      parameters:
+        - in: path
+          name: pedidoId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: pedido found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pedidos'
+        '404':
+          description: pedido not found.
+
+    put:
+      summary: Update a pedido by ID
+      operationId: updatePedido
+      tags:
+        - pedido
+      parameters:
+        - in: path
+          name: pedidoId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pedidos'
+      responses:
+        '200':
+          description: Successfully updated pedido.
+        '400':
+          description: Invalid input provided.
+        '404':
+          description: pedido not found.
+
+    delete:
+      summary: Delete a pedido by ID
+      operationId: deletePedido
+      tags:
+        - pedidos
+      parameters:
+        - in: path
+          name: pedidoId
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Successfully deleted pedido.
+        '404':
+          description: pedido not found.
+
+components:
+  schemas:
+    pedido:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for a pedido.
+        title:
+          type: string
+          description: The title of the pedido.
+        description:
+          type: string
+          description: The description of the pedido.
+      required:
+        - title
+        - description

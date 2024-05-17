@@ -1,0 +1,114 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2024-05-10T00:00:00.000Z",
+  "__export_source": "insomnia.desktop",
+  "resources": [
+    {
+      "_id": "wrk_123456",
+      "_type": "workspace",
+      "name": "My API Project - FastAPI",
+      "description": "Workspace for testing the FastAPI version of the pedido API"
+    },
+    {
+      "_id": "req_list_pedidos",
+      "_type": "request",
+      "_parentId": "wrk_123456",
+      "name": "List pedidos",
+      "method": "GET",
+      "url": "{{ base_url }}/pedidos",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "req_create_pedido",
+      "_type": "request",
+      "_parentId": "wrk_123456",
+      "name": "Create pedido",
+      "method": "POST",
+      "url": "{{ base_url }}/pedidos",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"title\": \"New pedido\", \"description\": \"Description of the new pedido\"}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {}
+    },
+    {
+      "_id": "req_get_pedido",
+      "_type": "request",
+      "_parentId": "wrk_123456",
+      "name": "Get pedido",
+      "method": "GET",
+      "url": "{{ base_url }}/pedidos/{{ pedidoId }}",
+      "body": {},
+      "parameters": [
+        {
+          "name": "pedidoId",
+          "value": "1" 
+        }
+      ],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "req_update_pedido",
+      "_type": "request",
+      "_parentId": "wrk_123456",
+      "name": "Update pedido",
+      "method": "PUT",
+      "url": "{{ base_url }}/pedidos/{{ pedidoId }}",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\"title\": \"Updated pedido\", \"description\": \"Updated description of the pedido\"}"
+      },
+      "parameters": [
+        {
+          "name": "pedidoId",
+          "value": "1" 
+        }
+      ],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {}
+    },
+    {
+      "_id": "req_delete_pedido",
+      "_type": "request",
+      "_parentId": "wrk_123456",
+      "name": "Delete pedido",
+      "method": "DELETE",
+      "url": "{{ base_url }}/pedidos/{{ pedidoId }}",
+      "body": {},
+      "parameters": [
+        {
+          "name": "pedidoId",
+          "value": "1" 
+        }
+      ],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "env_base",
+      "_type": "environment",
+      "data": {
+        "base_url": "http://localhost:5000"
+      },
+      "name": "Base Environment",
+      "parentId": "wrk_123456"
+    }
+  ]
+}
