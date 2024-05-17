@@ -4,6 +4,11 @@ from pydantic import BaseModel
 
 router = APIRouter()
 
+# Mock database
+todos = [
+    {"id": "1", "title": "pedido 1", "description": "milk"},
+    {"id": "2", "title": "pedido 2", "description": "bread"}
+]
 
 # Pydantic models
 class pedido(BaseModel):
